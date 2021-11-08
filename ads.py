@@ -16,7 +16,7 @@ keyword = "password,pwd,email,username,@gmail.com,@yahoo.com,@hotmail.com,accoun
 #keyword = "credit card,visa,mastercard,master card,union pay,hsbc,bank" #credit card info
 #keyword = "anything" #custom
 
-source = [y for x in walk("file") for y in glob(path.join(x[0], '*.*'))] #modify source here
+source = [y for x in walk("file") for y in glob(path.join(x[0], '*.*'))] #modify target path here
 mutex = Lock()
 breadth = 0
 environ['OMP_THREAD_LIMIT'] = '1'
