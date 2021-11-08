@@ -1,9 +1,3 @@
-#GUI (sudo): cd ~/ && echo "xfce4-session" > .xsession && apt install xrdp xfce4 -y --> choose lightdm
-#Start GUI: service xrdp start
-#Config port: nano /etc/xrdp/xrdp.ini --> set port to 3390
-#Configs for GUI: apt install okular firefox
-#setup (sudo): apt-get update && apt-get install python3 python3-pip tesseract-ocr -y && pip3 install testresources textract
-
 import textract
 from glob import glob
 from shutil import copyfile as cpf
