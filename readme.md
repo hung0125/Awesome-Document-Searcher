@@ -1,3 +1,6 @@
+Background info: <br/>
+**This tool is relying on textract3 library, for more info, just go there https://pypi.org/project/textract3/**
+
 Setup (sudo): <br/>
 **apt-get update && apt-get install python3 python3-pip tesseract-ocr -y && pip3 install testresources textract**
 
