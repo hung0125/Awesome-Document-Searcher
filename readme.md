@@ -1,5 +1,5 @@
 Background info: <br/>
-**This tool is relying on textract3 library, for more info, just go there https://pypi.org/project/textract3/**
+**This tool relies on textract3 library, for more info, just go there https://pypi.org/project/textract3/**
 
 Setup (sudo): <br/>
 **apt-get update && apt-get install python3 python3-pip tesseract-ocr -y && pip3 install testresources textract**
@@ -12,4 +12,4 @@ How to use: <br/>
 **4. Run "python3 ads.py"**
 
 Note: <br/>
-**Don't use it on your phone, or you want to use your phone to cook eggs :)**
+**Don't use it on your phone if you have large number of files to be scanned, it melts your CPUs and hurt your fingers**
