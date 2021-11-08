@@ -10,3 +10,6 @@ How to use: <br/>
 **2. Modify the path of target files if you want** <br/>
 **3. Modify the search keywords if you want** <br/>
 **4. Run "python3 ads.py"**
+
+Note: <br/>
+**Don't use it on your phone, or you want to use your phone to cook eggs :)**
