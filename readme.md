@@ -1,7 +1,7 @@
-setup (sudo): <br/>
+Setup (sudo): <br/>
 **apt-get update && apt-get install python3 python3-pip tesseract-ocr -y && pip3 install testresources textract**
 
-how to use: <br/>
+How to use: <br/>
 **0. Git clone this f-ing page or download the script directly** <br/>
 **1. Open the script** <br/>
 **2. Modify the path of target files if you want** <br/>
