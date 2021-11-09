@@ -1,9 +1,11 @@
 import textract
+from time import time
 from glob import glob
 from shutil import copyfile as cpf
 from math import floor, ceil
 from multiprocessing import Lock, Process
 from os import walk, path, cpu_count, remove, environ
+from datetime import timedelta
 
 searchLS = ["password,pwd,email,username,@gmail.com,@yahoo.com,@hotmail.com,account,帳,密碼", 
     "credit card,visa,mastercard,master card,union pay,hsbc,bank"
@@ -12,6 +14,16 @@ keyword = ""
 source = ""
 mutex = Lock()
 environ['OMP_THREAD_LIMIT'] = '1'
+startTime = 0
+
+def timerStart():
+    global startTime
+    startTime = int(time())
+
+def reportTime():
+    endTime = int(time())
+    print("-"*50)
+    print(f"\nTime used: {str(timedelta(seconds= int(endTime - startTime)))}, Hour:Minute:Second")
 
 def lowPerformance():
     for i in range(len(source)):
@@ -40,7 +52,8 @@ def lowPerformance():
     genResult()
         
 
-def handleDOC(tid, word, partLS):
+def handleDOC(tid, word, partLS, tSize):
+    print(f"This phase handles {tSize} mb of files")
     for i in range(len(partLS)):
         print(f"TID-{tid}: {i + 1}/{len(partLS)} ({floor(((i + 1)/len(partLS))*100)}%) - {partLS[i]}")
 
@@ -149,6 +162,8 @@ def genResult():
 
     print("\nResults are inside result.html")
 
+    reportTime()
+
 def ask():
     global keyword, source
     
@@ -180,6 +195,7 @@ def ask():
     open("temp_result", "w").write("")
     open("result.html", "w").write("<html><body>Put this file next to 'file' folder to make hotlinking works<br><br>")
 
+    timerStart()
     if choice4 == "y":
         lowPerformance()
         exit()
@@ -197,11 +213,14 @@ if __name__ == "__main__":
         procs = []
         for j in range(len(srtSrc[i])): 
             if len(srtSrc[i][j]) > 0:
-                procs.append(Process(target = handleDOC, args = (j+1, keyword, srtSrc[i][j])))
+                tSize = 0
+                for k in range(len(srtSrc[i][j])):
+                    tSize += path.getsize(srtSrc[i][j][k])
+                tSize /= 1000000
+                procs.append(Process(target = handleDOC, args = (j+1, keyword, srtSrc[i][j], tSize)))
                 procs[len(procs) - 1].start()
 
         for j in range(len(procs)):
             procs[j].join()
             
-
     genResult()
